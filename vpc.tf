@@ -24,9 +24,9 @@ resource "aws_vpc" "vpc1" {
 
 # create subnet
 resource "aws_subnet" "sub1" {
-    cidr_block = "20.0.2.0/24"
+    cidr_block = var.cidr_block[0]
     vpc_id = aws_vpc.vpc1.id
-availability_zone = var.az1a
+availability_zone = var.az[0]
     tags = {
       Name = "pub-sub"
     }
@@ -34,9 +34,9 @@ availability_zone = var.az1a
 }
 
 resource "aws_subnet" "sub2" {
-    cidr_block = "20.0.3.0/24"
+    cidr_block = var.cidr_block[1]
     vpc_id = aws_vpc.vpc1.id
-availability_zone = var.az1b
+availability_zone = var.az[1]
     tags = {
       Name = "pri-sub"
     }
